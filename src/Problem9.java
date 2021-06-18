@@ -5,7 +5,7 @@ public class Problem9 {
         for (int a = 2; tripletAns == 0; a++) {
             for (int b = 2; b < a; b++) {
                 int cSquared = a*a + b*b;
-                if (isSquare(cSquared)) {
+                if (EulerUtils.isPerfectSquare(cSquared)) {
                     int c = (int) Math.sqrt(cSquared);
                     if (a + b + c == 1000)
                         tripletAns = a*b*c;
@@ -15,7 +15,4 @@ public class Problem9 {
         System.out.println(tripletAns);
     }
 
-    public static boolean isSquare(int n) {
-        return (Math.sqrt(n) == Math.round(Math.sqrt(n)));
-    }
 }
