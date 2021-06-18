@@ -3,7 +3,8 @@ import java.math.BigInteger;
 public class EulerUtils {
 
     public static boolean isPrime(int n) {
-        if (n % 2 == 0) return false;
+        if (n < 2) return false;
+        if (n % 2 == 0 || n % 3 == 0) return false;
         for (int i = 2; i < Math.ceil(Math.sqrt(n)) + 1; i++)
             if (n % i == 0)
                 return false;
@@ -54,5 +55,14 @@ public class EulerUtils {
             res += Integer.parseInt(n.substring(i, i+1));
         }
         return res;
+    }
+
+    public static boolean isBaseN(double val, int n) {
+        double log = logBaseN(val, n);
+        return log == (int) log;
+    }
+
+    public static double logBaseN(double val, int n) {
+        return Math.log(val) / Math.log(n);
     }
 }
