@@ -22,11 +22,7 @@ public class Problem27 {
 
     private static int numberOfPrimes(int a, int b) {
         for (int i = 0; ; i++)
-            if (!EulerUtils.isPrime(magicFunc(i, a, b)))
+            if (!EulerUtils.isPrime(i*i + a*i + b))
                 return i;
-    }
-
-    private static int magicFunc(int n, int a, int b) {
-        return n*n + a*n + b;
     }
 }
