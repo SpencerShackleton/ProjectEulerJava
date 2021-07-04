@@ -4,7 +4,8 @@ public class EulerUtils {
 
     public static boolean isPrime(int n) {
         if (n < 2) return false;
-        if (n % 2 == 0 || n % 3 == 0) return false;
+        if (n == 2 | n == 3) return true;
+        if (n % 6 == 0 || n % 6 == 2 || n % 6 == 4 || n % 6 == 3) return false;
         for (int i = 2; i < Math.ceil(Math.sqrt(n)) + 1; i++)
             if (n % i == 0)
                 return false;
@@ -64,5 +65,47 @@ public class EulerUtils {
 
     public static double logBaseN(double val, int n) {
         return Math.log(val) / Math.log(n);
+    }
+
+    public static boolean isPalindrome(String n) {
+        int split = (int) Math.ceil(n.length()/2d);
+        String front = n.length() % 2 == 0 ? n.substring(0,split) : n.substring(0,split-1);
+        String back = reverse(n.substring(split));
+        return front.equals(back);
+    }
+
+    public static String reverse(String start) {
+        int len = start.length();
+        char[] reversed = new char[len];
+        for (int i = 0; i < len; i++) {
+            reversed[i] = start.charAt(len-i-1);
+        }
+        return new String(reversed);
+    }
+
+    public static String convertNumToBaseN(double num, double base, double maxDigits) {
+        return convertToBase(num, base, maxDigits, "");
+    }
+
+    private static String convertToBase(double n, double base, double currentPower, String currentReturn) {
+
+        if (currentPower == -1) return currentReturn;
+
+        double mod = Math.pow(base, currentPower);
+        int goesInto = (int) Math.floor(n/mod);
+        double remainder = goesInto > 0 ? n % mod : n;
+
+        return convertToBase(remainder, base, currentPower - 1, currentReturn += Integer.toString(goesInto));
+    }
+
+    public static String removeLeadingZeroes(String n) {
+        String noZeroes = "";
+        for (int i = 0; i < n.length(); i++) {
+            if (n.charAt(i) != '0') {
+                noZeroes = n.substring(i);
+                break;
+            }
+        }
+        return noZeroes;
     }
 }
