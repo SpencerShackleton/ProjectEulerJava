@@ -108,4 +108,12 @@ public class EulerUtils {
         }
         return noZeroes;
     }
+
+    public static boolean isPandigital(String n) {
+        if (n.length() != 9) return false;
+        for (int i = 1; i <= 9; i++)
+            if (!n.contains(i+""))
+                return false;
+        return true;
+    }
 }
