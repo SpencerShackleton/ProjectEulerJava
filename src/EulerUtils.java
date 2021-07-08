@@ -1,6 +1,18 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigInteger;
 
 public class EulerUtils {
+
+    public static String readFile(String name) {
+        try {
+            return new BufferedReader(new FileReader(name)).readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
     public static boolean isPrime(int n) {
         if (n < 2) return false;
@@ -109,11 +121,15 @@ public class EulerUtils {
         return noZeroes;
     }
 
-    public static boolean isPandigital(String n) {
-        if (n.length() != 9) return false;
-        for (int i = 1; i <= 9; i++)
-            if (!n.contains(i+""))
+    public static boolean isPandigital(String num, int n) {
+        if (num.length() != n) return false;
+        for (int i = 1; i <= n; i++)
+            if (!num.contains(i+""))
                 return false;
         return true;
+    }
+
+    public static boolean isPandigital(String num) {
+        return isPandigital(num, 9);
     }
 }
