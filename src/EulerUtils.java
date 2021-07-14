@@ -121,6 +121,13 @@ public class EulerUtils {
         return noZeroes;
     }
 
+    public static boolean pandigitalZeroToNine(String num) {
+        for (int i = 0; i <= 9; i++)
+            if (!num.contains(i+""))
+                return false;
+        return true;
+    }
+
     public static boolean isPandigital(String num, int n) {
         if (num.length() != n) return false;
         for (int i = 1; i <= n; i++)
