@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class EulerUtils {
 
@@ -15,13 +16,20 @@ public class EulerUtils {
     }
 
     public static boolean isPrime(int n) {
-        if (n < 2) return false;
+        if (n <= 1) return false;
         if (n == 2 | n == 3) return true;
         if (n % 6 == 0 || n % 6 == 2 || n % 6 == 4 || n % 6 == 3) return false;
         for (int i = 2; i < Math.ceil(Math.sqrt(n)) + 1; i++)
             if (n % i == 0)
                 return false;
         return true;
+    }
+
+    public static ArrayList<Integer> getFirstMillionPrimes() {
+        ArrayList<Integer> primes = new ArrayList<>();
+        primes.add(2);
+        for (int i = 1; i < 1000000; i+=2) if (isPrime(i)) primes.add(i);
+        return primes;
     }
 
     public static int numOfFactors(int n) {
