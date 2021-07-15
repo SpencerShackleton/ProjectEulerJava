@@ -6,7 +6,7 @@ public class Problem47 {
 
     public static void main(String[] args) {
         final int amountToSearch = 4;
-        ArrayList<Integer> primes = EulerUtils.getFirstMillionPrimes();
+        ArrayList<Integer> primes = EulerUtils.getPrimesUnderN(1000000);
         ArrayList<Integer> lastConsecutive = new ArrayList<>();
         for (int i = 1; i < 100000000; i++) {
             Set<Integer> primeFactors = new HashSet<>();

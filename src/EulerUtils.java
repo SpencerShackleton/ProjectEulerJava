@@ -25,10 +25,10 @@ public class EulerUtils {
         return true;
     }
 
-    public static ArrayList<Integer> getFirstMillionPrimes() {
+    public static ArrayList<Integer> getPrimesUnderN(int n) {
         ArrayList<Integer> primes = new ArrayList<>();
         primes.add(2);
-        for (int i = 1; i < 1000000; i+=2) if (isPrime(i)) primes.add(i);
+        for (int i = 1; i < n; i+=2) if (isPrime(i)) primes.add(i);
         return primes;
     }
 
@@ -115,7 +115,7 @@ public class EulerUtils {
         int goesInto = (int) Math.floor(n/mod);
         double remainder = goesInto > 0 ? n % mod : n;
 
-        return convertToBase(remainder, base, currentPower - 1, currentReturn += Integer.toString(goesInto));
+        return convertToBase(remainder, base, currentPower - 1, currentReturn + goesInto);
     }
 
     public static String removeLeadingZeroes(String n) {
