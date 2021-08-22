@@ -78,6 +78,24 @@ public class EulerUtils {
         return res;
     }
 
+    public static int sumDigitsOfInt(int n) {
+        int sum = 0;
+        while (n != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static int sumBigIntDigits(BigInteger n) {
+        int sum = 0;
+        String digits = n.toString();
+        for (char c : digits.toCharArray()) {
+            sum += c - '0';
+        }
+        return sum;
+    }
+
     public static boolean isBaseN(double val, int n) {
         double log = logBaseN(val, n);
         return log == (int) log;
