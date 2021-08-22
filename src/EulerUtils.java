@@ -103,6 +103,26 @@ public class EulerUtils {
         return new String(reversed);
     }
 
+    public static int reverse(int x) {
+        int rev = 0;
+        while(x != 0){
+            rev = rev*10 + x%10;
+            x = x/10;
+        }
+
+        return rev;
+    }
+
+    public static long reverse(long x) {
+        long rev = 0;
+        while(x != 0){
+            rev = rev*10 + x%10;
+            x = x/10;
+        }
+
+        return rev;
+    }
+
     public static String convertNumToBaseN(double num, double base, double maxDigits) {
         return convertToBase(num, base, maxDigits, "");
     }
